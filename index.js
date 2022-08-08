@@ -1,10 +1,12 @@
 // Button that when clicked, gets a new deck of cards from the deck of cards API
 
 let deckId
+let cardsRemaining
 const deckBtn = document.getElementById('deck-btn')
 const newCardBtn = document.getElementById('new-cards')
 const cardsContainer = document.getElementById('cards')
 let declareWinner = document.getElementById('declare-winner')
+let remainingText = document.getElementById('remaining')
 
 function handleClick() {
   fetch('https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/')
@@ -13,6 +15,8 @@ function handleClick() {
       console.log(data)
       deckId = data.deck_id
       console.log(deckId)
+      cardsRemaining = data.remaining
+      remainingText.innerHTML = `${cardsRemaining} Cards Remaining`
     })
 }
 
@@ -31,6 +35,9 @@ newCardBtn.addEventListener('click', () => {
   `
 
       declareWinner.innerHTML = `${calcWinner(data.cards[0].value, data.cards[1].value)}`
+
+      cardsRemaining = data.remaining
+      remainingText.innerHTML = `${cardsRemaining} Cards Remaining`
     })
 })
 
