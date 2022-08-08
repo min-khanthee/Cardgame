@@ -4,6 +4,7 @@ let deckId
 const deckBtn = document.getElementById('deck-btn')
 const newCardBtn = document.getElementById('new-cards')
 const cardsContainer = document.getElementById('cards')
+let declareWinner = document.getElementById('declare-winner')
 
 function handleClick() {
   fetch('https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/')
@@ -28,20 +29,22 @@ newCardBtn.addEventListener('click', () => {
       cardsContainer.children[1].innerHTML = `
       <img src=${data.cards[1].image} />
   `
+
+      declareWinner.innerHTML = `${calcWinner(data.cards[0].value, data.cards[1].value)}`
     })
 })
 
 function calcWinner(card1, card2) {
   const cardsIndex = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'JACK', 'QUEEN', 'KING', 'ACE']
 
-  const card1IndexValue = cardsIndex.indexOf(card1.value)
-  const card2IndexValue = cardsIndex.indexOf(card2.value)
+  const card1IndexValue = cardsIndex.indexOf(card1)
+  const card2IndexValue = cardsIndex.indexOf(card2)
 
   if (card1IndexValue > card2IndexValue) {
-    console.log('Bot wins!')
+    return 'Bot wins!'
   } else if (card1IndexValue < card2IndexValue) {
-    console.log('You win!')
+    return 'You win!'
   } else {
-    console.log("It's a tie!")
+    return "It's a tie!"
   }
 }
