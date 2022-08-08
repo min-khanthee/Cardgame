@@ -30,3 +30,18 @@ newCardBtn.addEventListener('click', () => {
   `
     })
 })
+
+function calcWinner(card1, card2) {
+  const cardsIndex = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'JACK', 'QUEEN', 'KING', 'ACE']
+
+  const card1IndexValue = cardsIndex.indexOf(card1.value)
+  const card2IndexValue = cardsIndex.indexOf(card2.value)
+
+  if (card1IndexValue > card2IndexValue) {
+    console.log('Bot wins!')
+  } else if (card1IndexValue < card2IndexValue) {
+    console.log('You win!')
+  } else {
+    console.log("It's a tie!")
+  }
+}
