@@ -2,4 +2,28 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background: green;
+  font-family: 'Exo 2', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+button {
+  background-color: #fff100;
+  cursor: pointer;
+  border: none;
+}
+
+button#deck-btn {
+  align-self: flex-start;
+  padding: 5px;
+}
+
+button#new-cards {
+  font-size: 1.2em;
+  padding: 5px;
 }
