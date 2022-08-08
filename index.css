@@ -41,3 +41,7 @@ div.card-slot {
 div.card-slot:nth-of-type(1) {
   margin-bottom: 50px;
 }
+
+img {
+  width: 100%;
+}
