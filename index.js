@@ -2,6 +2,13 @@
 
 let deckId
 let cardsRemaining
+
+let compScore = 0
+let youScore = 0
+
+const compScoreText = document.getElementById('comp-score')
+const youScoreText = document.getElementById('you-score')
+
 const deckBtn = document.getElementById('deck-btn')
 const newCardBtn = document.getElementById('new-cards')
 const cardsContainer = document.getElementById('cards')
@@ -52,8 +59,12 @@ function calcWinner(card1, card2) {
   const card2IndexValue = cardsIndex.indexOf(card2)
 
   if (card1IndexValue > card2IndexValue) {
+    compScore++
+    compScoreText.innerHTML = `Bot score: ${compScore}`
     return 'Bot wins!'
   } else if (card1IndexValue < card2IndexValue) {
+    youScore++
+    youScoreText.innerHTML = `Your score: ${youScore}`
     return 'You win!'
   } else {
     return "It's a tie!"
