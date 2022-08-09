@@ -12,8 +12,8 @@ const youScoreText = document.getElementById('you-score')
 const deckBtn = document.getElementById('deck-btn')
 const newCardBtn = document.getElementById('new-cards')
 const cardsContainer = document.getElementById('cards')
-let declareWinner = document.getElementById('declare-winner')
-let remainingText = document.getElementById('remaining')
+const declareWinner = document.getElementById('declare-winner')
+const remainingText = document.getElementById('remaining')
 
 function handleClick() {
   fetch('https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/')
@@ -48,6 +48,13 @@ newCardBtn.addEventListener('click', () => {
 
       if (data.remaining === 0) {
         newCardBtn.disabled = true
+        if (compScore > youScore) {
+          declareWinner.textContent = 'Bot wins the game!'
+        } else if (compScore < youScore) {
+          declareWinner.textContent = 'You win the game!'
+        } else {
+          declareWinner.textContent = `It's a tie!`
+        }
       }
     })
 })
