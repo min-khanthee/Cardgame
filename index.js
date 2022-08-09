@@ -38,6 +38,10 @@ newCardBtn.addEventListener('click', () => {
 
       cardsRemaining = data.remaining
       remainingText.innerHTML = `${cardsRemaining} Cards Remaining`
+
+      if (data.remaining === 0) {
+        newCardBtn.disabled = true
+      }
     })
 })
 
